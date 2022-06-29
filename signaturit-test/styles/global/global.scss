@@ -1,0 +1,521 @@
+@import "./mixins.scss";
+
+
+$colors: (
+    
+	colBla: rgb(255, 255, 255),
+    colGonGra: #929095,
+	colGreMed: #EBE7F2,
+    colGonRedHar: #5A100E,
+    colGonSof: #651E1A,
+	colGonAzuPri: #2245FF,
+	colGonAzuSec: #001CAF,
+	colGonAzuOsc: #02124A,
+
+);
+
+
+
+
+:root {
+	
+	// Variables CSS generadas automáticamente a partir del map $colors
+	@each $name, $color in $colors {
+		// --colRoj: "red";
+		--#{$name}: #{$color};
+	}
+	
+	
+	// Color que cambia al estar en luz o gas (se modifica desde JS)
+	--colLuzGas: var(--colVerCor);
+	--hueRotate: var(0deg); // en gas 65deg
+	
+}
+
+
+
+// ***********************************************************
+// Clases colores
+// ***********************************************************
+
+// Clases generadas automáticamente con el mismo nombre que el nombre del color
+@each $colorName, $color in $colors {
+    .#{$colorName} {
+       color: $color !important;
+    }
+}
+
+
+
+// ***********************************************************
+// Fuentes
+// ***********************************************************
+
+
+@font-face {
+	font-family: "sigPopBla";
+	src: url("../fonts/poppins-black.ttf");
+}
+@font-face {
+	font-family: "sigPopLig";
+	src: url("../fonts/poppins-light.ttf");
+}
+@font-face {
+	font-family: "sigPopMed";
+	src: url("../fonts/poppins-medium.ttf");
+}
+
+
+
+
+
+// ***********************************************************
+// Reset
+// ***********************************************************
+
+* {
+    margin: 0;
+    padding: 0;
+    
+	// color: var(--pri9);
+	font-family: "gonMonLig", 'DM Sans', sans-serif;
+	
+	
+	
+	@include tablet {
+		font-size: 0.98em;
+	}
+	@include mobile {
+		font-size: 1em;
+	}
+	
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+
+body {
+	font-size: 14px;
+	// background-color: rgb(1, 56, 114);
+	// background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1920' height='1080' preserveAspectRatio='none' viewBox='0 0 1920 1080'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1096%26quot%3b)' fill='none'%3e%3cpath d='M -1674.2531739313622%2c90 C -1482.25%2c263.8 -1098.25%2c939.6 -714.2531739313623%2c959 C -330.25%2c978.4 -138.25%2c173.2 245.7468260686377%2c187 C 629.75%2c200.8 870.9%2c984 1205.7468260686378%2c1028 C 1540.6%2c1072 1777.15%2c531.2 1920%2c407' stroke='rgba(0%2c 207%2c 167%2c 0.1)' stroke-width='2'%3e%3c/path%3e%3cpath d='M -1736.6065116616628%2c780 C -1544.61%2c674.2 -1160.61%2c224.4 -776.6065116616627%2c251 C -392.61%2c277.6 -200.61%2c953.6 183.3934883383373%2c913 C 567.39%2c872.4 796.07%2c88 1143.3934883383372%2c48 C 1490.71%2c8 1764.68%2c580 1920%2c713' stroke='rgba(0%2c 207%2c 167%2c 0.1)' stroke-width='2'%3e%3c/path%3e%3cpath d='M -1394.8309704093294%2c965 C -1202.83%2c792.8 -818.83%2c158 -434.83097040932955%2c104 C -50.83%2c50 141.17%2c623 525.1690295906704%2c695 C 909.17%2c767 1206.2%2c457.8 1485.1690295906706%2c464 C 1764.14%2c470.2 1833.03%2c673.6 1920%2c726' stroke='rgba(0%2c 207%2c 167%2c 0.1)' stroke-width='2'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1096'%3e%3crect width='1920' height='1080' fill='white'%3e%3c/rect%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e");
+	// background-image: url('https://ganaenergia.com/wp-content/uploads/2020/03/fondo_navidad.svg');
+	background-size: cover;
+	overflow-x: hidden;
+	-webkit-text-size-adjust: none;
+	
+}
+
+
+
+// ***********************************************************
+// Estados
+// ***********************************************************
+
+.cp {
+	cursor: pointer;
+}
+
+.hide {
+	visibility: hidden;
+	display: none;
+}
+
+.hideOnTablet {
+	@include tablet {
+		display: none !important;
+	}
+}
+
+.hideOnMobile {
+	@include mobile {
+		display: none !important;
+	}
+}
+
+.hideOnDesktop {
+	@include desktop {
+		display: none !important;
+	}
+}
+
+.shadow {
+	transition: box-shadow 0.3s, border-color 0.3s, -webkit-box-shadow 0.3s;
+	box-shadow: 0 1px 2px -2px rgba(0, 0, 0, 0.16), 0 3px 6px 0 rgba(0, 0, 0, 0.12), 0 5px 12px 4px rgba(0, 0, 0, 0.09);
+}
+.shadowHover:hover {
+	transition: box-shadow 0.3s, border-color 0.3s, -webkit-box-shadow 0.3s;
+	box-shadow: 0 1px 2px -2px rgba(0, 0, 0, 0.16), 0 3px 6px 0 rgba(0, 0, 0, 0.12), 0 5px 12px 4px rgba(0, 0, 0, 0.09);
+}
+
+.elipsis {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+
+
+// ***********************************************************
+// Flex
+// ***********************************************************
+
+.flex {display: flex};
+.fdr {display: flex; flex-direction: row};
+.fdc {display: flex; flex-direction: column};
+
+.jcc {display: flex; justify-content: center};
+.jcfs {display: flex; justify-content: flex-start};
+.jcfe {display: flex; justify-content: flex-end};
+.jcsa {display: flex; justify-content: space-around};
+.jcsb {display: flex; justify-content: space-between};
+.jcse {display: flex; justify-content: space-evenly};
+
+.aic {display: flex; align-items: center};
+.aifs {display: flex; align-items: flex-start};
+.aife {display: flex; align-items: flex-end};
+
+.fww {display: flex; flex-wrap: wrap};
+
+
+// ***********************************************************
+// Padding
+// ***********************************************************
+
+$em1: 0.25em;
+$em2: 0.5em;
+$em3: 1em;
+$em4: 1.5em;
+$em5: 2em;
+$em6: 8em;
+
+.p0 { padding: 0;}
+.pt0 { padding-top: 0;}
+.pr0 { padding-right: 0;}
+.pb0 { padding-bottom: 0;}
+.pl0 { padding-left: 0;}
+
+.p1 { padding: $em1;}
+.pt1 { padding-top: $em1;}
+.pr1 { padding-right: $em1;}
+.pb1 { padding-bottom: $em1;}
+.pl1 { padding-left: $em1;}
+
+.p2 { padding: $em2;}
+.pr2 { padding-right: $em2;}
+.pt2 { padding-top: $em2;}
+.pb2 { padding-bottom: $em2;}
+.pl2 { padding-left: $em2;}
+
+.p3 { padding: $em3;}
+.pt3 { padding-top: $em3;}
+.pr3 { padding-right: $em3;}
+.pb3 { padding-bottom: $em3;}
+.pl3 { padding-left: $em3;}
+
+.p4 { padding: $em4;}
+.pr4 { padding-right: $em4;}
+.pt4 { padding-top: $em4;}
+.pb4 { padding-bottom: $em4;}
+.pl4 { padding-left: $em4;}
+
+.p5 { padding: $em5;}
+.pt5 { padding-top: $em5;}
+.pr5 { padding-right: $em5;}
+.pb5 { padding-bottom: $em5;}
+.pl5 { padding-left: $em5;}
+
+.responsiveWidth {
+	
+	margin: auto;
+	@include gte(1200) {max-width: 1140px}
+	@include lte(1199) {max-width: 960px}
+	@include lte(1025) {max-width: 850px}
+	@include lte(992) {max-width: 720px}
+	@include lte(768) {max-width: 700px}
+	@include lte(645) {max-width: 540px}
+	@include lte(585) {padding: 0}
+	
+}
+
+
+
+// ***********************************************************
+// LineHeight
+// ***********************************************************
+
+
+.lh1 { line-height: $em1;}
+.lh2 { line-height: $em2 + 0.4;}
+.lh3 { line-height: $em3;}
+.lh4 { line-height: $em4;}
+.lh5 { line-height: $em5;}
+
+
+// ***********************************************************
+// Margin
+// ***********************************************************
+
+.m0 { margin: 0;}
+.mt0 { margin-top: 0;}
+.mr0 { margin-right: 0;}
+.mb0 { margin-bottom: 0;}
+.ml0 { margin-left: 0;}
+
+.m1 { margin: $em1;}
+.m2 { margin: $em2;}
+.m3 { margin: $em3;}
+.m4 { margin: $em4;}
+.m5 { margin: $em5;}
+
+.mt1 { margin-top: $em1;}
+.mr1 { margin-right: $em1;}
+.mb1 { margin-bottom: $em1;}
+.ml1 { margin-left: $em1;}
+
+.mt2 { margin-top: $em2;}
+.mr2 { margin-right: $em2;}
+.mb2 { margin-bottom: $em2;}
+.ml2 { margin-left: $em2;}
+
+.mt3 { margin-top: $em3;}
+.mr3 { margin-right: $em3;}
+.mb3 { margin-bottom: $em3;}
+.ml3 { margin-left: $em3;}
+
+.mt4 { margin-top: $em4;}
+.mr4 { margin-right: $em4;}
+.mb4 { margin-bottom: $em4;}
+.ml4 { margin-left: $em4;}
+
+.mt5 { margin-top: $em5;}
+.mr5 { margin-right: $em5;}
+.mb5 { margin-bottom: $em5;}
+.ml5 { margin-left: $em5;}
+
+.mt6 { margin-top: $em6;}
+.mr6 { margin-right: $em6;}
+.mb6 { margin-bottom: $em6;}
+.ml6 { margin-left: $em6;}
+
+
+
+// ***********************************************************
+// Sizes
+// ***********************************************************
+.w100 {width: 100%}
+.h100 {height: 100%}
+.w75 {width: 75%}
+.h75 {height: 75%}
+.w66 {width: 66%}
+.h66 {height: 66%}
+.w50 {width: 50%}
+.h50 {height: 50%}
+.w33 {width: 33%}
+.h33 {height: 33%}
+.w25 {width: 25%}
+.h25 {height: 25%}
+
+.wminc {width: min-content};
+.wmaxc {width: max-content};
+.wfitc {width: fit-content};
+
+.hminc {height: min-content};
+.hmaxc {height: max-content};
+.hfitc {height: fit-content};
+
+
+// ***********************************************************
+// Text
+// ***********************************************************
+
+.tac {text-align: center }
+.tal {text-align: left }
+.tar {text-align: right }
+
+.wsn {white-space: normal }
+.wspw {white-space: pre-wrap }
+.wspl {white-space: pre-line }
+.wsnw {white-space: nowrap }
+
+strong { font-family: ganaBold }
+.bold { font-family: ganaBold}
+.bolder {font-family: ganaBolder}
+
+
+
+// ***********************************************************
+// Text size
+// ***********************************************************
+
+$fs5: 2.55em; // 40px
+$fs7: calc( #{$fs5} * 1.75);
+$fs6: calc( #{$fs5} * 1.35);
+$fs4: calc( #{$fs5} * 0.70); // 30px
+$fs3: calc( #{$fs5} * 0.47); // 20px
+$fs2: calc( #{$fs5} * 0.395); // 16px
+$fs1: calc( #{$fs5} * 0.3148); // 12px
+
+.fs7 { font-size: $fs7}
+.fs6 { font-size: $fs6}
+.fs5 { font-size: $fs5}
+.fs4 { font-size: $fs4}
+.fs3 { font-size: $fs3}
+.fs2 { font-size: $fs2}
+.fs1 { font-size: $fs1}
+
+
+@include tablet {
+	$fs5: 2.2em;
+	.fs7 { font-size: $fs7}
+	.fs6 { font-size: $fs6}
+	.fs5 { font-size: $fs5}
+	.fs4 { font-size: $fs4}
+	.fs3 { font-size: $fs3}
+	.fs2 { font-size: $fs2}
+	.fs1 { font-size: $fs1}
+}
+
+@include tabletVertical {
+
+	.fs7 { font-size: 3.5em}
+
+}
+
+
+@include mobile {
+	$fs5: 1.7em;
+	.fs6 { font-size: $fs6}
+	.fs5 { font-size: $fs5}
+	.fs4 { font-size: $fs4}
+	.fs3 { font-size: $fs3}
+	.fs2 { font-size: $fs2}
+	.fs1 { font-size: $fs1}
+}
+
+
+
+// ***********************************************************
+// Antd override
+// ***********************************************************
+
+.ant-select-item-option-content {
+	white-space: normal;
+}
+
+.ant-typography-copy-success {
+	color: var(--colVerCor) !important;
+}
+
+.ant-select-selection-item {
+	white-space: pre-line !important;
+}
+
+.ant-btn-primary {
+	background: var(--colLuzGas) !important;
+	border-color: var(--colLuzGas) !important;
+};
+.ant-btn-primary:hover:enabled {
+	filter: brightness(107%) !important;
+}
+.ant-btn-primary:disabled {
+	background: #f5f5f5 !important;
+    border-color: #d9d9d9 !important;	
+}
+
+
+
+// ***********************************************************
+// Elementos base
+// ***********************************************************
+
+// h1,h2,h3,h4,h5,p {
+// 	margin: 0 !important;
+// 	padding: 0 !important;
+// }
+
+// a,p {
+// 	font-size: $fs2;
+// }
+
+a {
+	color: var(--colVerOscCor);
+	transition: color 0.2s
+}
+a:hover {
+	color: var(--colVerClaCor);
+}
+
+input {
+	font-size: 1.15em !important;
+}
+
+h1 {
+    
+    font-family: 'gonMonReg';
+    font-size: $fs6;
+    line-height: 1em;
+    margin-bottom: 0.5em;
+
+}
+
+h2 {
+
+    font-family: 'gonMonReg';
+    font-weight: 100;
+    font-size: $fs4;
+    line-height: 1.3em;
+}
+
+.subH2 {
+
+	font-family: 'gonMonReg';
+    font-weight: 100;
+    font-size: $fs3;
+    line-height: 1.3em;
+
+}
+
+
+
+// ***********************************************************
+// Específicos de gana
+// ***********************************************************
+
+.notification-button {
+	background-color: #f2f4f5 !important;
+	border: none !important;
+	color: black !important;
+	transition: all 1s !important;
+}
+
+.notification-button:hover {
+	background-color: #D8D8D8 !important;
+	color: black !important;
+	border: none !important;
+}
+
+.notification-button:focus {
+	background-color: #D8D8D8 !important;
+	color: black !important;
+	border: none !important;
+}
+
+.linkHamburguesa {
+	
+	@include mobile {
+		font-size: 1.5em !important;
+	}
+	
+	@include tablet {
+		font-size: 1.3em;
+	}
+	
+	@include miniDesktop {
+		font-size: 1.1em;
+	}
+	
+	font-size: 1em;
+	
+}
