@@ -1,14 +1,17 @@
 import React from 'react';
+import NavBarGeneral from './NavBarGeneral';
 
 const GeneralLayout = ({children}) => {
 
   return (
 
-    <>
+    <div className='responsiveWidth'>
+
+      <NavBarGeneral />
     
-    {children}
+      {children}
     
-    </>
+    </div>
 
 
   )

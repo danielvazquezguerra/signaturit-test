@@ -1,0 +1,147 @@
+@import './mixins.scss';
+@import './global.scss';
+
+
+.PrincipalContent {
+
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: $em3;
+    font-family: 'sigPopMed';
+
+    .homHea {
+
+        display: flex;
+        width: 100%;
+        justify-content: flex-start;
+        align-items: center;
+        margin-bottom: $em4;
+
+        .nomUsu {
+
+            font-family: 'sigPopLig';
+            font-size: $fs4;
+
+            
+            span {
+                
+                font-family: 'sigPopBla';
+                // font-size: $fs4;
+
+            }
+        }
+
+        p {
+
+            font-family: 'sigPopLig';
+            font-size: $fs4;
+        }
+    }
+
+    .docConWra {
+
+        height: 300px;
+        width: 100%;
+        box-shadow: 7px -5px 27px -7px rgba(0,0,0,0.17);
+        border-radius: 15px;
+        margin-top: $em2;
+        padding: 2em;
+
+        .iteDocBox {
+
+            display: flex;
+            justify-content: space-between;
+            border: 1px solid var(--blue);
+            border-radius: 5px;
+            height: 70px;
+            margin-bottom: $em3;
+            padding: $em3;
+            cursor: pointer;
+
+            .infBox {
+
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                width: 70%;
+                // border: 1px solid black;
+
+                .docNom {
+
+                    font-family: 'sigPopBla';
+                    color: var(--blue);
+                    width: 250px;
+                }
+
+                .fecDoc {
+
+                    font-family: 'sigPopLig';
+                    width: 200px;
+                }
+
+                .staDoc {
+
+                    font-family: 'sigPopBla';
+                    color: var(--green);
+                    
+                }
+            }
+
+            .tooIcoBox {
+
+                width: 30%;
+                // border: 1px solid green;
+                display: flex;
+                justify-content: space-between;
+
+                .butBoxWra {
+
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                    // border: 1px solid black;
+
+                    button {
+
+                        border: 0px;
+                        background-color: transparent;
+                        margin: 0em 1em 0em 1em;
+                        height: 20px;
+                        width: 30px;
+                        cursor: pointer;
+
+                        img {
+
+                            height: 100%;
+                        }
+                    }
+
+                    button:hover {
+
+                        height: 25px;
+                    }
+                }
+
+                .imgBox {
+                    padding: $em1;
+
+                    img {
+
+                        height: 100%;
+                    }
+
+
+                }
+            }
+        }
+
+        .iteDocBox:hover {
+
+            border: 2px solid var(--green);
+        }
+    }
+
+}

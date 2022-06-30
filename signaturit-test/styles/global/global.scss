@@ -3,14 +3,14 @@
 
 $colors: (
     
-	colBla: rgb(255, 255, 255),
-    colGonGra: #929095,
-	colGreMed: #EBE7F2,
-    colGonRedHar: #5A100E,
-    colGonSof: #651E1A,
-	colGonAzuPri: #2245FF,
-	colGonAzuSec: #001CAF,
-	colGonAzuOsc: #02124A,
+	blue: #1D3D3F,
+    gray: #525252,
+    green: #39DC73,
+    yellow: #FCD812,
+    cian: #18F2CB,
+    light-gray: #8E9E9F,
+    dark-blue: #0A083B,
+    light-green: #AAF9CB,
 
 );
 
@@ -25,10 +25,6 @@ $colors: (
 		--#{$name}: #{$color};
 	}
 	
-	
-	// Color que cambia al estar en luz o gas (se modifica desde JS)
-	--colLuzGas: var(--colVerCor);
-	--hueRotate: var(0deg); // en gas 65deg
 	
 }
 
@@ -394,50 +390,7 @@ $fs1: calc( #{$fs5} * 0.3148); // 12px
 	.fs1 { font-size: $fs1}
 }
 
-
-
-// ***********************************************************
-// Antd override
-// ***********************************************************
-
-.ant-select-item-option-content {
-	white-space: normal;
-}
-
-.ant-typography-copy-success {
-	color: var(--colVerCor) !important;
-}
-
-.ant-select-selection-item {
-	white-space: pre-line !important;
-}
-
-.ant-btn-primary {
-	background: var(--colLuzGas) !important;
-	border-color: var(--colLuzGas) !important;
-};
-.ant-btn-primary:hover:enabled {
-	filter: brightness(107%) !important;
-}
-.ant-btn-primary:disabled {
-	background: #f5f5f5 !important;
-    border-color: #d9d9d9 !important;	
-}
-
-
-
-// ***********************************************************
-// Elementos base
-// ***********************************************************
-
-// h1,h2,h3,h4,h5,p {
-// 	margin: 0 !important;
-// 	padding: 0 !important;
-// }
-
-// a,p {
-// 	font-size: $fs2;
-// }
+//Elementos base
 
 a {
 	color: var(--colVerOscCor);
@@ -453,10 +406,12 @@ input {
 
 h1 {
     
-    font-family: 'gonMonReg';
-    font-size: $fs6;
+    font-family: 'sigPopLig';
+    font-size: $fs4;
     line-height: 1em;
     margin-bottom: 0.5em;
+	max-width: 300px;
+	color: var(--blue);
 
 }
 
