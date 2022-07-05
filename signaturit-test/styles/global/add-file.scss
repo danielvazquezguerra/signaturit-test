@@ -1,0 +1,154 @@
+@import './mixins.scss';
+@import './global.scss';
+
+
+
+.overMask {
+
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--green);
+    opacity: 0.5;
+    z-index: 199;
+
+}
+
+.formAddFile {
+
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    left: 30%;
+    top: 20%;
+    display: flex;
+    width: 40%;
+    height: auto;
+    z-index: 200;
+    padding: 3em;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 7px -5px 27px -7px rgba(0,0,0,0.17);
+
+    .barButHea {
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 2em;
+        margin-bottom: 2em;
+        border-bottom: 1px solid var(--green);
+
+        p {
+
+            font-family: 'sigPopBla';
+            font-size: 1.3em;
+        }
+
+        button {
+
+            background-color: transparent;
+            border: 0px;
+            cursor: pointer;
+
+            img {
+
+                height: 30px;
+            }
+        }
+    }
+
+    .inpBox {
+
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 2em;
+
+        label {
+
+            font-family: 'sigPopBla';
+            font-size: 1em;
+            margin-bottom: 0.5em;
+        }
+
+        input {
+
+            height: 50px;
+            border-radius: 10px;
+            border: 1px solid var(--blue);
+            padding: 1em;
+
+        }
+
+    }
+
+    .inpBoxFile {
+
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 2em;
+
+        label {
+
+            font-family: 'sigPopBla';
+            font-size: 1em;
+            margin-bottom: 0.5em;
+        }
+
+        input[type="file"]::-webkit-file-upload-button{
+
+            display: flex;
+            margin-bottom: 1em;
+            border: 1px solid var(--blue);
+            border-radius: 10px;
+            background-color: white;
+            font-family: 'sigPopBla';
+            font-size: 0.9em;
+            cursor: pointer;
+            padding: 0.5em;
+            height: 40px;
+         }
+
+    }
+
+    .butBoxWra {
+
+        width: 100%;
+        // border: 1px solid black;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 50px;
+
+        button {
+
+            width: 48%;
+            height: 90%;
+            background-color: white;
+            border-radius: 10px;
+            font-family: 'sigPopBla';
+            cursor: pointer;
+        }
+
+        button:hover {
+
+            font-size: 1.1em;
+        }
+
+        .addFilBut {
+
+            border: 2px solid var(--green);
+            background-color: var(--green);
+        }
+
+        .canBut {
+
+            color: var(--blue);
+            border: 2px solid var(--blue);
+        }
+    }
+
+}
+

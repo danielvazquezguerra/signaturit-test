@@ -3,6 +3,7 @@ import '../styles/global/global.scss';
 import '../styles/global/mixins.scss';
 import '../styles/global/index.scss';
 import '../styles/global/index.scss';
+import '../styles/global/add-file.scss';
 import '../styles/global/navbar-general.scss';
 
 

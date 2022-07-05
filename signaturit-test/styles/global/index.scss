@@ -6,7 +6,7 @@
 
     display: flex;
     flex-direction: column;
-    height: 80vh;
+    height: auto;
     justify-content: flex-start;
     align-items: flex-start;
     padding: $em3;
@@ -16,9 +16,11 @@
 
         display: flex;
         width: 100%;
-        justify-content: flex-start;
+        justify-content: space-between;
+        height: 70px;
         align-items: center;
         margin-bottom: $em4;
+        // border: 1px solid black;
 
         .nomUsu {
 
@@ -34,6 +36,49 @@
             }
         }
 
+        .butBox {
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 300px;
+            height: 70%;
+
+            button {
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 90%;
+                height: 90%;
+                border-radius: 10px;
+                border: 0px;
+                background-color: var(--green);
+                font-family: 'sigPopBla';
+                cursor: pointer;
+
+                img {
+
+                    height: 50%;
+                }
+
+                p {
+
+                    font-family: 'sigPopBla';
+                    font-size: $fs2;
+                    margin: 0px;
+                    margin-left: $em2;
+                    color: var(--blue);
+                }
+            }
+
+            button:hover {
+
+                width: 100%;
+                height: 100%;
+            }
+        }
+
         p {
 
             font-family: 'sigPopLig';
@@ -43,7 +88,7 @@
 
     .docConWra {
 
-        height: 300px;
+        height: auto;
         width: 100%;
         box-shadow: 7px -5px 27px -7px rgba(0,0,0,0.17);
         border-radius: 15px;
@@ -82,12 +127,21 @@
                     width: 200px;
                 }
 
-                .staDoc {
+                .staDocTrue {
 
                     font-family: 'sigPopBla';
                     color: var(--green);
                     
                 }
+
+                .staDocFalse {
+
+                    font-family: 'sigPopBla';
+                    color: var(--blue);
+                    
+                }
+
+
             }
 
             .tooIcoBox {
