@@ -30,6 +30,8 @@ export default function Home() {
 
   const [files, setFiles] = useState(null);
 
+
+
   
 
   useEffect(() => {
@@ -46,11 +48,18 @@ export default function Home() {
           console.error(error)
           
       }
-  
+
+      try {
+
+
+        
+      } catch (error) {
+        
+      }
   
   })()
     
-  }, [files])
+  }, [])
 
 
   const addFile = () => {
@@ -76,7 +85,7 @@ export default function Home() {
         {
           showModal === true &&
 
-          <AddFileModal closeButton={closeButton}/>
+          <AddFileModal closeButton={closeButton} />
 
         }
 
@@ -106,7 +115,11 @@ export default function Home() {
           {
             files?.map((_files, key) =>{
 
-              return <FileCard data={_files} key={key}/>
+              return <FileCard 
+                        data={_files} 
+                        key={key} 
+                        idFile={_files._id}
+                      />
 
             })
           }

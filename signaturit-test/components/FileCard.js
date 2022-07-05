@@ -1,6 +1,23 @@
-import React from 'react'
+import React from 'react';
+import axios from 'axios';
 
-const FileCard = ({data}) => {
+const FileCard = ({data, idFile}) => {
+
+    const deleteItem = async (id) => {
+
+        try {
+            
+            axios.get(`http://localhost:3002/delete/${id}`)
+
+        } catch (error) {
+
+            console.error(error);
+            
+        }
+
+    }
+
+
 
   return (
 
@@ -43,7 +60,7 @@ const FileCard = ({data}) => {
                       <img src="/assets/img/download_icon.svg" alt="shared icon" />
                   </button>
 
-                  <button>
+                  <button onClick={()=>deleteItem(idFile)}>
                       <img src="/assets/img/delete_icon.svg" alt="shared icon" />
                   </button>
 

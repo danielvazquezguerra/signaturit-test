@@ -22,7 +22,16 @@ const AddFileModal = ({closeButton}) => {
 
         try {
             
-            await axios.post(`http://localhost:3002/add?title=${title}&description=${description}`);
+           let response = await axios.post(`http://localhost:3002/add?title=${title}&description=${description}`);
+
+           console.log(response.status)
+
+            if ( response.status === 200 ) {
+
+                setShowModal(false);
+                
+              }
+             
 
         } catch (error) {
 
