@@ -28,11 +28,8 @@ export default function Home() {
     }
   ];
 
-  const [files, setFiles] = useState(null);
+  const [files, setFiles] = useState(filesStandard);
 
-
-
-  
 
   useEffect(() => {
    
@@ -59,7 +56,7 @@ export default function Home() {
   
   })()
     
-  }, [])
+  }, [files])
 
 
   const addFile = () => {
@@ -113,6 +110,26 @@ export default function Home() {
         <section className='docConWra'>
 
           {
+
+            files.length === 0 ? 
+            
+            <div className="emptyBox">
+
+              <img src="/assets/img/empty_icon_1.svg" alt="empty icon" />
+
+              <div className="texBox">
+
+                <p className='titTex'>La vida sin amigos ni documentos es triste.</p>
+                <p className='subTex'>Intenta <span>añadir documentos</span>.</p>
+
+              </div>
+
+
+            </div>
+
+
+            :
+
             files?.map((_files, key) =>{
 
               return <FileCard 

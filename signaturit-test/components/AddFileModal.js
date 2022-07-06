@@ -18,6 +18,8 @@ const AddFileModal = ({closeButton}) => {
 
         }
 
+        
+
         console.log(bodyFile);
 
         try {
@@ -83,7 +85,7 @@ const AddFileModal = ({closeButton}) => {
 
                         <label htmlFor="name">Adjuntar documento</label>
 
-                        <input type="file" />
+                        <input type="file" onChange={(e)=>{console.log(e.target.value)}}/>
 
                     </div>
 

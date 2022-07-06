@@ -95,6 +95,43 @@
         margin-top: $em2;
         padding: 2em;
 
+        .emptyBox {
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            img {
+
+                height: 80px;
+            }
+
+            .texBox {
+
+                margin-left: $em3;
+
+                .titTex {
+    
+                    font-family: 'sigPopBla';
+                    font-size: $fs3;
+                    color: var(--blue);
+                }
+    
+                .subTex {
+    
+                    font-family: 'sigPopLig';
+                    color: var(--blue);
+    
+                    span {
+    
+                        font-family: 'sigPopBla';
+                    }
+                }
+
+            }
+
+        }
+
         .iteDocBox {
 
             display: flex;
