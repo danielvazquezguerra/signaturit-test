@@ -1,13 +1,19 @@
 import React from 'react';
 import axios from 'axios';
+import base64url from 'base64url';
+import { Buffer } from 'buffer';
+import { parse } from 'querystring';
 
-const FileCard = ({data, idFile}) => {
+const FileCard = ({data, idFile, callFiles }) => {
+
+    console.log(base64url);
 
     const deleteItem = async (id) => {
 
         try {
             
             axios.get(`http://localhost:3002/delete/${id}`)
+            callFiles();
 
         } catch (error) {
 
@@ -46,7 +52,14 @@ const FileCard = ({data, idFile}) => {
 
               <div className="imgBox">
 
-                  <img src="/assets/img/pdf_icon.svg" alt="pdf icon" />
+                <a 
+                href={`data:application/pdf;base64,${base64url}`}
+                >
+
+                    <img src="/assets/img/pdf_icon.svg" alt="pdf icon" />
+
+                </a>
+
 
               </div>
 

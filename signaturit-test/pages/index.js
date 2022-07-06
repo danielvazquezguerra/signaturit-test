@@ -9,26 +9,11 @@ import AddFileModal from '../components/AddFileModal';
 export default function Home() {
 
   const [showModal, setShowModal] = useState(false);
+  const [files, setFiles] = useState(null);
+  const [response, setResponse] = useState(null)
 
-  let filesStandard = [
-    {
-      title: 'Documento 01',
-      description: 'Esta es la descripción del documento 01',
-      status: true
-    },
-    {
-      title: 'Documento 02',
-      description: 'Esta es la descripción del documento 02',
-      status: false
-    },
-    {
-      title: 'Documento 03',
-      description: 'Esta es la descripción del documento 03',
-      status: true
-    }
-  ];
 
-  const [files, setFiles] = useState(filesStandard);
+  // let files = null;
 
 
   useEffect(() => {
@@ -37,8 +22,10 @@ export default function Home() {
   
       try {
           
-          const response = await axios.get('http://localhost:3002/all');
+          let response = await axios.get('http://localhost:3002/all');
           setFiles(response.data);
+          console.log(response.data);
+        
   
       } catch (error) {
   
@@ -46,19 +33,33 @@ export default function Home() {
           
       }
 
-      try {
-
-
-        
-      } catch (error) {
-        
-      }
   
   })()
     
-  }, [files])
+  }, [])
 
 
+  //Función solo para hacer el REQUEST cuando tenga que actualizar la tabla de documentos.
+  const callFiles = async () => {
+
+    try {
+          
+      const response = await axios.get('http://localhost:3002/all');
+      console.log(response.data);
+
+
+      setFiles(response.data);
+    
+
+  } catch (error) {
+
+      console.error(error)
+      
+  }
+
+  };
+
+  // Al pulsar el botón de AÑADIR DOCUMENTO renderiza el modal de formulario.
   const addFile = () => {
 
     setShowModal(true);
@@ -66,6 +67,8 @@ export default function Home() {
 
   }
 
+  // Apaga el formulario para incluir documentos.
+  // No quiero que cierre automáticamente al incluir uno nuevo porque puede que el usuario quiera incluir varios.
   const closeButton = () => {
 
     setShowModal(false);
@@ -82,7 +85,7 @@ export default function Home() {
         {
           showModal === true &&
 
-          <AddFileModal closeButton={closeButton} />
+          <AddFileModal closeButton={closeButton} callFiles={callFiles}/>
 
         }
 
@@ -111,7 +114,7 @@ export default function Home() {
 
           {
 
-            files.length === 0 ? 
+            files?.length === 0 ? 
             
             <div className="emptyBox">
 
@@ -130,12 +133,13 @@ export default function Home() {
 
             :
 
-            files?.map((_files, key) =>{
+            files?.map((_files, key) => {
 
               return <FileCard 
                         data={_files} 
                         key={key} 
                         idFile={_files._id}
+                        callFiles={callFiles}
                       />
 
             })

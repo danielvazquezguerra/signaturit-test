@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 
-const AddFileModal = ({closeButton}) => {
+const AddFileModal = ({closeButton, callFiles }) => {
 
     const [title, setTitle] = useState(null);
     const [description, setDescription] = useState(null);
+    const [fileUpload, setFileUpload] = useState(null)
     const [showModalAddFile, setShowModalAddFile] = useState(true);
 
     const addFileButton = async () => {
@@ -14,7 +15,8 @@ const AddFileModal = ({closeButton}) => {
         let bodyFile = {
 
             title: title,
-            description: description
+            description: description,
+            file: fileUpload,
 
         }
 
@@ -24,15 +26,17 @@ const AddFileModal = ({closeButton}) => {
 
         try {
             
-           let response = await axios.post(`http://localhost:3002/add?title=${title}&description=${description}`);
+           let response = await axios.post(`http://localhost:3002/add?title=${title}&description=${description}&file=${fileUpload}`);
 
            console.log(response.status)
 
-            if ( response.status === 200 ) {
+           callFiles();
 
-                setShowModal(false);
+            // if ( response.status === 200 ) {
+
+            //     setShowModal(false);
                 
-              }
+            //   }
              
 
         } catch (error) {
@@ -85,7 +89,7 @@ const AddFileModal = ({closeButton}) => {
 
                         <label htmlFor="name">Adjuntar documento</label>
 
-                        <input type="file" onChange={(e)=>{console.log(e.target.value)}}/>
+                        <input type="file" onChange={(e)=>{setFileUpload(e.target.files[0])}}/>
 
                     </div>
 
